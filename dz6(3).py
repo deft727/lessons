@@ -3,7 +3,7 @@ pmin=9999
 maxram=0
 minram=99
 maxcam=0
-memory=''
+
 
 def my_func(s):                         #моя ф-я для очистки цифр
     s2=''                               #переменая для чисел
@@ -59,7 +59,7 @@ def mysort3(s):
 	c=my_func3(x)
 	return c
 
-a=open('data2.txt','r')
+a=open('C:\\tmp1\data2.txt','r')
 s=a.read()
 items=s.split('\n')
 #print(items)
