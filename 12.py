@@ -1,5 +1,5 @@
 
 import time
 
-a = time.strftime("%Y-%m-%d-%H:%M", time.localtime())
-print(a)
+b = time.strftime("%Y-%m-%d-%H:%M", time.localtime())
+print(b)
