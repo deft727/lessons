@@ -1,3 +1,6 @@
+
+from collections import defaultdict
+
 a=open('C://tmp1/test.txt','r')
 b=a.read()
 s=b.split('\n')
@@ -44,30 +47,32 @@ def analyze(str) :
             symbols['alpha']+=1
 
     return symbols
-dict1=[]
+dict={}
+dbs={}
 
 for i in s:
     res = analyze(i)
-    if res['='] > 10:
-        name=alpha(i)
-        dict1.append(name)
-    if res['alpha']==17:
-        x=i.split('|')
-        snum=x[0]
-        sname=x[1]
-        city=x[2]
-        comm=x[3]
-    if res['digit']>3 and res['alpha']>3:
-        x=i.split('|')
-        snum1=x[0]
-        snum=digit(snum1)
-        sname1 = x[1]
-        sname=alpha(sname1)
-        city1 = x[2]
-        city=alpha(city1)
-        comm1 = x[3]
-        comm=digit(comm1)
-        dict1.append({'sname':sname,'snum':snum,'city':city,'comm':comm})
+    if res['=']>10:
+        table=alpha(i)
+
+    if res['alpha']>10 and res['digit']<1:
+        name=i.split(' | ')
+
+    if res['|']>=3 and res['-']<7 and res['digit']>1:
+        #print(i)
+        val=i.split('|')
+
+        dbs.update({'table_name': table, 'data':name})
+
+print(dbs)
 
 
-print(dict1)
+
+
+
+
+
+
+
+
+
