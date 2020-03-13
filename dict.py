@@ -1,5 +1,4 @@
 
-from collections import defaultdict
 
 a=open('C://tmp1/test.txt','r')
 b=a.read()
