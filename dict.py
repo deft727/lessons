@@ -51,17 +51,30 @@ def analyze(str) :
 
 dict={}
 dbs=[]
+t = {}
 
 for i in s:
     res = analyze(i)
     if res['=']>10:
         table=alpha(i)
 
+        dict['table_name'] = table
+
+
+
     if res['alpha']>10 and res['digit']<1:
         name=i.split(' | ')
 
 
-    if res['|']>=3 and res['-']<7 and res['digit']>1:
-        val=i.split('|')
-        dict.update([name])
-print(dict)
+
+
+
+
+    dict['data'] = []
+for j in range(len(name)):
+    t[name[j]] = val[j]
+    dict['data'].append(t)
+
+
+
+
