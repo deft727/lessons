@@ -46,8 +46,11 @@ def analyze(str) :
             symbols['alpha']+=1
 
     return symbols
+
+
+
 dict={}
-dbs={}
+dbs=[]
 
 for i in s:
     res = analyze(i)
@@ -57,21 +60,8 @@ for i in s:
     if res['alpha']>10 and res['digit']<1:
         name=i.split(' | ')
 
+
     if res['|']>=3 and res['-']<7 and res['digit']>1:
-        #print(i)
         val=i.split('|')
-
-        dbs.update({'table_name': table, 'data':name})
-
-print(dbs)
-
-
-
-
-
-
-
-
-
-
-
+        dict.update([name])
+print(dict)
