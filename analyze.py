@@ -44,7 +44,6 @@ def alpha(s):
     return s2
 
 
-dict={}
 dbs=[]
 
 for i in s:
@@ -60,13 +59,18 @@ for i in s:
     if res['|'] >= 3 and res['-'] < 7 and res['digit'] > 1:
         val = i.split('|')
 
+
+        dict = {}
         dict['table_name'] = table
         dict['data'] = []
-        t = {}
+        t={}
         for j in range(len(name)):
             t[name[j]] = val[j]
         dict['data'].append(t)
 
-        dbs.append(dict)
 
-print(dbs)
+        dbs.append(dict)
+#print(dbs)
+for i in dbs:
+
+    print(i)
