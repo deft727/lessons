@@ -1,7 +1,0 @@
-# folder logs
-logs/
-
-# txt-files
-.gitignore
-.txt
-docs/*.txt
