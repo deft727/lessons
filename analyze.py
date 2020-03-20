@@ -2,17 +2,6 @@ a=open('C://tmp1/test.txt','r')
 b=a.read()
 s=b.split('\n')
 
-def digit(s):                         #моя ф-я для очистки цифр
-    s2=''                               #переменая для чисел
-    for i in s:                     #перебор в переданом ф-и списке
-        if i.isdigit()!=True:       #если цифра
-            continue                 #добавляю в перем.s2
-        else:                       #иначе
-            s2+=i                    #пропускаю
-    if len(s2)==0:              #если в списке 0 элементов
-        return 0                #возвращаю 0
-    else:                       #иначе
-        return s2
 
 def analyze(str) :
     symbols = {
@@ -36,41 +25,56 @@ def analyze(str) :
 
     return symbols
 
-def alpha(s):
-    s2=''
-    for i in s:
-        if i.isalpha():
-            s2 += i
-    return s2
 
+state = 0
 
 dbs=[]
 
 for i in s:
     res = analyze(i)
-    if res['=']>10:
+    if res['=']>10 and state==0:
 
-        table=alpha(i)
+        table=i.strip().strip('=').strip()
+        dbs.append({ "table-name": table, "data" : []})
+        #print(table)
+        state=1
+
+    if res['-'] > 8 and state == 1 :
+        state = 2
+
+    if res['|'] > 2 and res['alpha'] > 0 and state == 2 :
+        name=i.strip().split(' | ')
+        #print(name)
+        fldsName = []
+        for fname in name:
+            fldsName.append(fname)
+            #print(fldsName)
+        state=3
+
+    if res['|'] > 0 and res['-'] > 2 and state == 3 :
+        state = 4
+
+    if res['digit'] > 2 and res['alpha'] >= 0   and state==4:
+        val = i.strip().split('|')
+
+        fldsData = []
+
+        for fname in val:
+            fldsData.append(fname)
+        #print(fldsData)
+        dataItem = {}
+        for j in range(len(fldsName)) :
+            dataItem[fldsName[j]] = fldsData[j]
+        for db in dbs :
+            if db['table-name'] == table :
+                break
+        db['data'].append(dataItem)
+        state = 5
+    if res['-'] > 2 and state == 5 :
+        state = 0
 
 
-    if res['alpha']>10 and res['digit']<1:
-        name=i.split(' | ')
-
-    if res['|'] >= 3 and res['-'] < 7 and res['digit'] > 1:
-        val = i.split('|')
-
-
-        dict = {}
-        dict['table_name'] = table
-        dict['data'] = []
-        t={}
-        for j in range(len(name)):
-            t[name[j]] = val[j]
-        dict['data'].append(t)
-
-
-        dbs.append(dict)
-#print(dbs)
 for i in dbs:
-
     print(i)
+
+
