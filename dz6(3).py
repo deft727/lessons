@@ -220,3 +220,7 @@ while n!=0:
 
     else:
         print('\t\t\tвыход')
+
+
+
+
