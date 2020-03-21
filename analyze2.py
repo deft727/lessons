@@ -69,4 +69,21 @@ for line in lines:
         state = 0
     if a['-'] == 0 and state == 5 :
         state = 4
-print(dbs)
+
+n=''
+while n!=0:
+    print('\n\nчто ищем?, sales = нажать 1,customers = нажать 2,orders = нажать 3, 0 = выход: \n\n\n')
+    n=int(input('введите ваш выбор:'))
+
+    if n==1:
+            for i in dbs:
+                if i['table-name']=='sales':
+                    print(i)
+    if n==2:
+            for i in dbs:
+                if i['table-name']=='customers':
+                    print(i)
+    if n==3:
+            for i in dbs:
+                if i['table-name']=='orders':
+                    print(i)
