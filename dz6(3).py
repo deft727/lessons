@@ -80,7 +80,8 @@ for item in items:
     qnty1=x[5].strip()
     qnty=my_func2(qnty1)
     try:
-        camera=x[6].strip()
+        camera1 = x[6].strip()
+        camera = camera1.split(':')[1]
     except:
         camera='net'
    

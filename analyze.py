@@ -69,12 +69,11 @@ for i in s:
             if db['table-name'] == table :
                 break
         db['data'].append(dataItem)
-        state = 5
-    if res['-'] > 2 and state == 5 :
+        #state = 5
+
+    if res['-'] > 2 and res['|'] == 0 and state == 4:
         state = 0
 
 
 for i in dbs:
     print(i)
-
-
