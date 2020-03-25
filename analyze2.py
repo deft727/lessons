@@ -70,20 +70,31 @@ for line in lines:
     if a['-'] == 0 and state == 5 :
         state = 4
 
-n=''
-while n!=0:
-    print('\n\nчто ищем?, sales = нажать 1,customers = нажать 2,orders = нажать 3, 0 = выход: \n\n\n')
-    n=int(input('введите ваш выбор:'))
+a=()
+b=()
+while a!=0:
+    a = input('в какой таблице ищем: ')
+    b = input('какое имя ищем?: ')
 
-    if n==1:
-            for i in dbs:
-                if i['table-name']=='sales':
-                    print(i)
-    if n==2:
-            for i in dbs:
-                if i['table-name']=='customers':
-                    print(i)
-    if n==3:
-            for i in dbs:
-                if i['table-name']=='orders':
-                    print(i)
+
+    for db in dbs:
+        try:
+            if db['table-name'] == 'sales':
+                datas = db['data']
+                for data in datas:
+                    if data['sname'].strip() == b.title():
+                            print(data)
+            if db['table-name'] == 'customers':
+                datas = db['data']
+                for data in datas:
+                    if data['cname'].strip() == b.title():
+                            print(data)
+            if db['table-name'] == 'orders':
+                datas = db['data']
+                for data in datas:
+                    if data['onum'].strip() == b.title():
+                        print(data)
+
+        except:
+            print('такова значения нет' , b)
+
