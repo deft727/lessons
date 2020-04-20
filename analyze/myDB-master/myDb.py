@@ -14,12 +14,22 @@ i.importFromTxt()
 
 cmd = Command(i.getDbs())
 
-req = {
-    "command" : "find",
+"""req = {
+    "command" : "remove",
     "table" : "sales",
     "condition" : {
-        "=" : ['city', 'London']  
+        "=" : ['city', 'Londoself.databasen']
     }
+}"""
+
+
+req = {
+     "command" : "insert",
+     "table" : "sales",
+     "values" : { 'snum' : 1008,
+                   'city' : 'Kiyv',
+                'sname' : "John"
+                 }
 }
 
 cmd.doCommand(req)

@@ -9,8 +9,6 @@ class Command :
             return
         elif c == 'find' :
             self.doFind(cmd)
-        elif c == 'remove' :
-            self.doRemove(cmd)
         elif c == 'remove':
             self.doRemove(cmd)
         elif c == 'update':
@@ -92,3 +90,29 @@ class Command :
         data = db['data']
         for i in data :
             print(i)
+
+    def doInsert(self,cmd):
+
+        datas = self.database
+        table = cmd['table']
+        val = cmd['values']
+
+        for i in datas:
+            if datas['table_name']==table:
+
+                print(i)
+
+    def doRemove(self,cmd):
+        table = cmd['table']
+        cnd = cmd['condition']
+        for k, v in cnd.items():
+            if k == '=':
+                data = self.database
+                #print(data)
+
+                '''datas = dbs['data']
+                for data in datas:
+                    if data[v[0]] == v[1]:
+                        datas.remove(data)
+                        print(datas)'''
+
